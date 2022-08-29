@@ -1,0 +1,6 @@
+{
+  "DisableSSL": false,
+  "ConnectionStrings": {
+    "BuyThisContext": "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=BuyThisDataBase;Integrated Security=True;Connect Timeout=30;MultipleActiveResultSets=true"
+  }
+}

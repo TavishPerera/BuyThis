@@ -1,0 +1,19 @@
+﻿@model IEnumerable<Product>
+
+    @*<h1>Shop</h1>
+    <p>Count : @Model.Count()</p>
+    @foreach (var p in Model){
+        <li>@p.ProductName</li>
+    }*@
+
+@section Scripts{
+    <script src="~/client-app/runtime.dfeee1d39451ef17.js"></script>
+    <script src="~/client-app/polyfills.be3e8e003f99e6af.js"></script>
+    <script src="~/client-app/main.8432899d64a3700b.js"></script>
+}
+
+    @section head{
+    <link href="~/client-app/styles.ef46db3751d8e999.css" rel="stylesheet" />
+}
+
+    <the-product></the-product>

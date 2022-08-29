@@ -1,0 +1,40 @@
+﻿@model LoginViewModel
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section scripts {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.js"></script>
+}
+
+    <br />
+    <div align="center" class="container col-md-4 card bg-light">
+        <h2 class="card-body">Register with BuyThis.LK</h2>
+        <form method="post">
+            <div asp-validation-summary="ModelOnly"></div>
+            <br />
+            <div class="form-group">
+                <input asp-for="UserEmail" type="email" class="form-control" placeholder="Enter Email" />
+                <span asp-validation-for="UserEmail" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <input asp-for="UserPassword" type="password" class="form-control" placeholder="Enter Password" />
+                <span asp-validation-for="UserPassword" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <input asp-for="RememberMe" type="checkbox" class="checkbox-inline" />
+                <label asp-for="RememberMe">Remember me?</label>
+                <span asp-validation-for="RememberMe" class="text-warning"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-success" value="Login">
+            </div>
+            <br />
+        </form>
+    </div>

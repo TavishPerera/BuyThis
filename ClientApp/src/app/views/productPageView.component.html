@@ -1,0 +1,23 @@
+﻿<div class="row container">
+    <div class="col-sm-3" *ngFor="let p of store.products">
+
+        <div class="col-sm-3">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="/img/{{p.productPicture}}.jpg">
+                <div class="card-body">
+                    <h5 class="card-title">{{p.productName}}</h5>
+                    <p class="card-text">
+                        {{p.productDescription}}
+                        <br />
+                        {{p.productPrice | currency:"LKR "}}
+                    </p>
+                    <button id="buy" class="btn btn-success">Buy</button>
+                </div>
+            </div>
+            <br>
+        </div>
+
+    </div>
+         
+
+    </div>
