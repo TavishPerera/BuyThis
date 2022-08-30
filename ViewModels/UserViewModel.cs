@@ -5,7 +5,9 @@ namespace BuyThis.ViewModels
     public class UserViewModel
     {
         [Required]
-        public int Id { get; set; }
+        [MinLength(5)]
+        [Display(Name = "User Name")]
+        public string UserName { get; set; }
         [Required]
         [MinLength(5)]
         [Display(Name = "First Name")]

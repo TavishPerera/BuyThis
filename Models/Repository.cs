@@ -55,47 +55,47 @@ namespace BuyThis.Models
             _context.Add(model);
         }
 
-        public int NextUserNumber()
-        {
-            var result = (from u in _context.Users
-                          orderby u.UserNumber descending
-                          select u.UserNumber).FirstOrDefault();
+        //public int NextUserNumber()
+        //{
+        //    var result = (from u in _context.Users
+        //                  orderby u.UserNumber descending
+        //                  select u.UserNumber).FirstOrDefault();
 
-            if(result == 0)
-            {
-                return 10000001;
-            }
-            else
-            {
-                return result + 1;
-            }
-        }
+        //    if(result == 0)
+        //    {
+        //        return 10000001;
+        //    }
+        //    else
+        //    {
+        //        return result + 1;
+        //    }
+        //}
 
-        public int NextUserId()
-        {
-            var result = (from u in _context.Users
-                          orderby u.UserId descending
-                          select u.UserId).FirstOrDefault();
+        //public int NextUserId()
+        //{
+        //    var result = (from u in _context.Users
+        //                  orderby u.UserId descending
+        //                  select u.UserId).FirstOrDefault();
 
-            if (result == 0)
-            {
-                return 1;
-            }
-            else
-            {
-                return result + 1;
-            }
-        }
+        //    if (result == 0)
+        //    {
+        //        return 1;
+        //    }
+        //    else
+        //    {
+        //        return result + 1;
+        //    }
+        //}
 
         public Product GetProductByID(int id)
         {
             return _context.Products.Where(p => p.ProductId == id).FirstOrDefault();
         }
 
-        public User GetUserByID(int id)
-        {
-            return _context.Users.Where(u => u.UserId == id).FirstOrDefault();
-        }
+        //public User GetUserByID(int id)
+        //{
+        //    return _context.Users.Where(u => u.UserId == id).FirstOrDefault();
+        //}
 
         public IEnumerable<Order> GetAllOrders(bool includeItems)
         {
@@ -117,7 +117,7 @@ namespace BuyThis.Models
             if (includeItem)
             {
                 return _context.Orders
-                    .Where(o => o.User.UserEmail == userEmail)
+                    .Where(o => o.User.UserName == userEmail)
                     .Include(o => o.Items)
                     .ThenInclude(oi => oi.Product)
                     .ToList();
@@ -125,7 +125,7 @@ namespace BuyThis.Models
             else
             {
                 return _context.Orders
-                    .Where(o => o.User.UserEmail == userEmail)
+                    .Where(o => o.User.UserName == userEmail)
                     .ToList();
             }
         }
@@ -135,7 +135,7 @@ namespace BuyThis.Models
             return _context.Orders
                 .Include(o => o.Items)
                 .ThenInclude(oi => oi.Product)
-                .Where(o => o.OrderId == id && o.User.UserEmail == userEmail)
+                .Where(o => o.OrderId == id && o.User.UserName == userEmail)
                 .FirstOrDefault();
         }
 

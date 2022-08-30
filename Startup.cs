@@ -31,18 +31,11 @@ namespace BuyThis
             {
                 cfg.User.RequireUniqueEmail = true;
             }).AddEntityFrameworkStores<BuyThisContext>();
-            services.AddDbContext<BuyThisContext>(cfg =>
-            {
-                cfg.UseSqlServer();
-            });
             services.AddControllersWithViews();
             services.AddDbContext<BuyThisContext>(cfg => cfg.UseSqlServer(_config.GetConnectionString("BuyThisContext")));
-            //services.BuildServiceProvider().GetService<BuyThisContext>().Database.Migrate();
             services.AddScoped<IRepository, Repository>();
             services.AddMvc();
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
-            
-
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

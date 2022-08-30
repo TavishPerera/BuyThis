@@ -8,11 +8,6 @@ namespace BuyThis.Models
     {
         public Mapping()
         {
-            CreateMap<User, UserViewModel>()
-                .ForMember(uv => uv.Id,
-                map => map.MapFrom(o => o.UserId))
-                .ReverseMap();
-
             CreateMap<Order, OrderViewModel>()
                 .ForMember(ov => ov.Id,
                 map => map.MapFrom(o => o.OrderId))

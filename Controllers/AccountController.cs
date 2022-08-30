@@ -23,7 +23,7 @@ namespace BuyThis.Controllers
 
         public IActionResult Login()
         {
-            if (this.User.Identity.IsAuthenticated)
+            if (User.Identity.IsAuthenticated)
             {
                 return RedirectToAction("Index", "Main");
             }
@@ -34,7 +34,7 @@ namespace BuyThis.Controllers
         {
             if (ModelState.IsValid)
             {
-                var result = await _signInManager.PasswordSignInAsync(model.UserEmail,
+                var result = await _signInManager.PasswordSignInAsync(model.UserName,
                     model.UserPassword, model.RememberMe,false);
 
                 if (result.Succeeded)
@@ -54,6 +54,12 @@ namespace BuyThis.Controllers
                 ModelState.AddModelError("", "Failed to login");
             }
             return View();
+        }
+        [HttpGet]
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Main");
         }
     }
 }

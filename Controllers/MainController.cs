@@ -5,6 +5,7 @@ using BuyThis.Data;
 using BuyThis.ViewModels;
 using System;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace BuyThis.Controllers
 {
@@ -15,13 +16,14 @@ namespace BuyThis.Controllers
         private readonly IRepository _repository;
         private readonly IMapper _mapper;
         private readonly ILogger<MainController> _logger;
-        //private readonly BuyThisContext _context;
+        private readonly UserManager<User> _userManager;
 
-        public MainController(IRepository repository, IMapper mapper, ILogger<MainController> logger)
+        public MainController(IRepository repository, IMapper mapper, ILogger<MainController> logger, UserManager<User> userManager)
         {
             _repository = repository;
             _mapper = mapper;
             _logger = logger;
+            _userManager = userManager;
             //_context = context;
         }
 
@@ -31,12 +33,6 @@ namespace BuyThis.Controllers
             var results = _repository.GetAllProducts();
             return View(results);
         }
-
-        //public IActionResult ProductPage(int id)
-        //{
-        //    var results = _repository.GetProductByID(id);
-        //    return View(results);
-        //}
 
         [Authorize]
         public IActionResult Shop()
@@ -53,47 +49,27 @@ namespace BuyThis.Controllers
         }
 
         [HttpPost]
-        public IActionResult Register(UserViewModel model)
+        public async Task<IActionResult> Register(UserViewModel model)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    int num = _repository.NextUserNumber();
-                    int id = _repository.NextUserId();
 
-                    User user = new()
+                    var user = new User
                     {
-                        UserId = id,
-                        UserEmail = model.UserEmail,
-                        UserFName = model.UserFName,
-                        UserNumber = num,
-                        UserPhoneNumber = model.UserPhoneNumber,
-                        UserLName = model.UserLName,
-                        UserRole = "Customer",
-                        UserPassword = model.UserPassword
+                        UserName = model.UserName,
+                        FirstName = model.UserFName,
+                        LastName = model.UserLName,
+                        Email = model.UserEmail,
+                        PhoneNumber = model.UserPhoneNumber
                     };
 
-                    _repository.AddUser(user);
-                    if (_repository.SaveAll())
+                    var result = await _userManager.CreateAsync(user,model.UserPassword);
+
+                    if (result.Succeeded)
                     {
                         ViewBag.UserMessage = "Registered Successfully";
-
-                        Login login = new()
-                        {
-                            UserNumber = num,
-                            UserEmail = model.UserEmail,
-                            UserPhoneNumber = model.UserPhoneNumber,
-                            UserPassword = model.UserPassword
-                        };
-
-                        _repository.AddLoginDetails(login);
-                        if (_repository.SaveAll())
-                        {
-                            _logger.LogInformation("User Credentials Added");
-
-                            AddCartDetails(user.UserId, num);
-                        }
                     }
                 }
             }
@@ -103,54 +79,5 @@ namespace BuyThis.Controllers
             }
             return View();
         }
-
-        public void AddCartDetails(int id, int num)
-        {
-            Cart cart = new()
-            {
-                CartNumber = num,
-                UserID = id,
-                CartQty = 0,
-                CartTotal = 0
-            };
-
-            _repository.AddCart(cart);
-            if (_repository.SaveAll())
-            {
-                _logger.LogInformation("User Cart Details Added");
-            }
-        }
-
-        //[HttpPost]
-        //public IActionResult Register([FromBody] UserViewModel model)
-        //{
-        //    try
-        //    {
-        //        if (ModelState.IsValid)
-        //        {
-        //            var newUser = _mapper.Map<UserViewModel, User>(model);
-
-        //            _logger.LogInformation("Register was called in API");
-
-        //            _repository.AddUser(newUser);
-
-        //            if (_repository.SaveAll())
-        //            {
-        //                var map = _mapper.Map<User, UserViewModel>(newUser);
-        //                return Created($"/api/user/{newUser.UserId}", _mapper.Map<User, UserViewModel>(newUser));
-        //            }
-        //        }
-        //        else
-        //        {
-        //            return BadRequest(ModelState);
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        _logger.LogError($"Failed to register user:{ex}");
-
-        //    }
-        //    return BadRequest("Failed to register in API");
-        //}
     }
 }

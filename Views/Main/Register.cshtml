@@ -4,53 +4,56 @@
     ViewBag.Title = "Register";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 @section scripts {
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
 }
-
-<br />
-<div align="center" class="container col-md-4 card bg-light">
-    <h2 class="card-body">Register with BuyThis.LK</h2>
-            <form method="post">
-                <div asp-validation-summary="ModelOnly"></div>
-                <br />
-                <div class="form-group">
-                    <input asp-for="UserFName" class="form-control" placeholder="Enter First Name" />
-                    <span asp-validation-for="UserFName" class="text-danger"></span>
-                </div>
-                <br />
-                <div class="form-group">
-                    <input asp-for="UserLName" class="form-control" placeholder="Enter Last Name" />
-                    <span asp-validation-for="UserLName" class="text-danger"></span>
-                </div>
-                <br />
-                <div class="form-group">
-                    <input asp-for="UserEmail" type="email" class="form-control" placeholder="Enter Email" />
-                    <span asp-validation-for="UserEmail" class="text-danger"></span>
-                </div>
-                <br />
-                <div class="form-group">
-                    <input asp-for="UserPhoneNumber" type="number" class="form-control" placeholder="Enter Phone Number" />
-                    <span asp-validation-for="UserPhoneNumber" class="text-danger"></span>
-                </div>
-                <br />
-                <div class="form-group">
-                    <input asp-for="UserPassword" type="password" class="form-control" placeholder="Enter Password" />
-                    <span asp-validation-for="UserPassword" class="text-danger"></span>
-                </div>
-                <br />
-                <div class="form-group">
-                    <input asp-for="UserPassword" type="password" class="form-control" placeholder="Enter Confirm Password" />
-                    <span asp-validation-for="UserPassword" class="text-danger"></span>
-                </div>
-                <br />
-                <div class="form-group">
-                    <button type="submit" class="btn btn-success"> SignUp</button>
-                    <br />
-                    <div class="text-primary">@ViewBag.UserMessage</div>
-                    <br />
-                </div>
-            </form>
+    <br />
+    <div align="center" class="container col-md-4 card bg-light">
+        <h2 class="card-body">Register with BuyThis.LK</h2>
+        <form method="post">
+            <div asp-validation-summary="ModelOnly"></div>
+            <br />
+            <div class="form-group">
+                <input asp-for="UserName" class="form-control" placeholder="Enter Username" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
             </div>
+            <br />
+            <div class="form-group">
+                <input asp-for="UserFName" class="form-control" placeholder="Enter First Name" />
+                <span asp-validation-for="UserFName" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <input asp-for="UserLName" class="form-control" placeholder="Enter Last Name" />
+                <span asp-validation-for="UserLName" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <input asp-for="UserEmail" type="email" class="form-control" placeholder="Enter Email" />
+                <span asp-validation-for="UserEmail" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <input asp-for="UserPhoneNumber" type="number" class="form-control" placeholder="Enter Phone Number" />
+                <span asp-validation-for="UserPhoneNumber" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <input asp-for="UserPassword" type="password" class="form-control" placeholder="Enter Password" />
+                <span asp-validation-for="UserPassword" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <input asp-for="UserPassword" type="password" class="form-control" placeholder="Enter Confirm Password" />
+                <span asp-validation-for="UserPassword" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <button type="submit" class="btn btn-success"> SignUp</button>
+                <br />
+                <div class="text-primary">@ViewBag.UserMessage</div>
+                <br />
+            </div>
+        </form>
+    </div>
