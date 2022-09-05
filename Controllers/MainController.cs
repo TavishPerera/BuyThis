@@ -58,7 +58,7 @@ namespace BuyThis.Controllers
 
                     var user = new User
                     {
-                        UserName = model.UserName,
+                        UserName = model.UserEmail,
                         FirstName = model.UserFName,
                         LastName = model.UserLName,
                         Email = model.UserEmail,

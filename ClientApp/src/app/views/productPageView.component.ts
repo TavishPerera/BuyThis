@@ -16,19 +16,4 @@ export default class ProductPageView implements OnInit {
     ngOnInit(): void {
         this.store.loadProduct().subscribe();
     }
-
-
-    //public products: any[] = [];
-
-    //constructor(private store: Store) { 
-    //    this.products = store.products;
-    //}
-
-    //public products = [{
-    //    title: "Van",
-    //    price: "16"
-    //}, {
-    //    title: "Car",
-    //    price: "20"
-    //}];
 }

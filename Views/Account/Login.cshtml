@@ -12,11 +12,11 @@
     <div align="center" class="container col-md-4 card bg-light">
         <h2 class="card-body">Register with BuyThis.LK</h2>
         <form method="post">
-            <div asp-validation-summary="ModelOnly"></div>
+            <div asp-validation-summary="All"></div>
             <br />
             <div class="form-group">
-                <input asp-for="UserName" class="form-control" placeholder="Enter Email" />
-                <span asp-validation-for="UserName" class="text-danger"></span>
+                <input asp-for="UserEmail" type="email" class="form-control" placeholder="Enter Email" />
+                <span asp-validation-for="UserEmail" class="text-danger"></span>
             </div>
             <br />
             <div class="form-group">
@@ -32,6 +32,8 @@
             <div class="form-group">
                 <input type="submit" class="btn btn-success" value="Login">
             </div>
+            <br />
+            <div class="text-primary">@ViewBag.ErrorMessage</div>
             <br />
         </form>
     </div>

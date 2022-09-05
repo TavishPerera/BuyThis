@@ -5,8 +5,9 @@ namespace BuyThis.ViewModels
     public class LoginViewModel 
     {
         [Required]
-        [Display(Name = "User Name")]
-        public string UserName { get; set; }
+        [Display(Name = "Email")]
+        [EmailAddress]
+        public string UserEmail { get; set; }
         [Required]
         [MinLength(8)]
         [Display(Name = "Password")]

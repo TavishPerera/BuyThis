@@ -11,13 +11,10 @@
                         <br />
                         {{p.productPrice | currency:"LKR "}}
                     </p>
-                    <button id="buy" class="btn btn-success">Buy</button>
+                    <button id="buy" class="btn btn-success" (click)="store.addToOrder(p)">Buy</button>
                 </div>
             </div>
             <br>
         </div>
-
     </div>
-         
-
-    </div>
+</div>

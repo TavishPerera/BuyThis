@@ -9,13 +9,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\pages\shopPage.component.ts" />
+    <None Remove="ClientApp\src\app\router\index.ts" />
     <None Remove="ClientApp\src\app\services\store.service.ts" />
+    <None Remove="ClientApp\src\app\shared\Order.ts" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.8" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.8" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.8">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -24,7 +28,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\pages\shopPage.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\router\index.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\store.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\shared\Order.ts" />
   </ItemGroup>
 
 </Project>

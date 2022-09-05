@@ -17,6 +17,11 @@ namespace BuyThis.Models
             _logger = logger;
         }
 
+        public void AddEntity(object model)
+        {
+            _context.Add(model);
+        }
+
         public IEnumerable<Product> GetAllProducts()
         {
             _logger.LogInformation("GetAllProducts was called in Repository");
@@ -34,68 +39,12 @@ namespace BuyThis.Models
         {
             _logger.LogInformation("AddUser was called in Repository");
             _context.Add(model);
-
-            
         }
-
-        public void AddLoginDetails(object model)
-        {
-            _logger.LogInformation("AddLoginDetails was called in Repository");
-            _context.Add(model);
-        }
-
-        public void AddCart(object model)
-        {
-            _logger.LogInformation("AddCart was called in Repository");
-            _context.Add(model);
-        }
-        public void AddOrder(object model)
-        {
-            _logger.LogInformation("AddOrder was called in Repository");
-            _context.Add(model);
-        }
-
-        //public int NextUserNumber()
-        //{
-        //    var result = (from u in _context.Users
-        //                  orderby u.UserNumber descending
-        //                  select u.UserNumber).FirstOrDefault();
-
-        //    if(result == 0)
-        //    {
-        //        return 10000001;
-        //    }
-        //    else
-        //    {
-        //        return result + 1;
-        //    }
-        //}
-
-        //public int NextUserId()
-        //{
-        //    var result = (from u in _context.Users
-        //                  orderby u.UserId descending
-        //                  select u.UserId).FirstOrDefault();
-
-        //    if (result == 0)
-        //    {
-        //        return 1;
-        //    }
-        //    else
-        //    {
-        //        return result + 1;
-        //    }
-        //}
 
         public Product GetProductByID(int id)
         {
             return _context.Products.Where(p => p.ProductId == id).FirstOrDefault();
         }
-
-        //public User GetUserByID(int id)
-        //{
-        //    return _context.Users.Where(u => u.UserId == id).FirstOrDefault();
-        //}
 
         public IEnumerable<Order> GetAllOrders(bool includeItems)
         {
@@ -145,7 +94,7 @@ namespace BuyThis.Models
             {
                 item.Product = _context.Products.Find(item.Product.ProductId);
             } 
-           AddOrder(newOrder);
+           AddEntity(newOrder);
         }
     }
 }
