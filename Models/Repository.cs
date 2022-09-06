@@ -74,7 +74,7 @@ namespace BuyThis.Models
             }
             else
             {
-                int x = (int)Int64.Parse(number);
+                int x = (int)Int64.Parse(result);
                 int z = x + 1;
                 number = z.ToString();
             }

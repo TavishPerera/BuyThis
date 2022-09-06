@@ -6,7 +6,7 @@
     productPicture: string | undefined;
     productPrice: number | undefined;
     productDescription: string | undefined;
-    quantity: number | undefined;
+    quantity: number | undefined
     unitPrice: number | undefined;
 }
 
