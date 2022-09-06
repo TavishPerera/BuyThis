@@ -12,6 +12,7 @@ export class Store {
 
     public products: Product[] = [];
     public order: Order = new Order();
+    public orderItem: OrderItem = new OrderItem();
     public token = "";
     public exp = new Date();
 
@@ -44,11 +45,23 @@ export class Store {
             }));
     }
 
+    //removeItem(z: OrderItem) {
+    //    /*let item: OrderItem | undefined;*/
+    //    let x : Product | undefined;
+
+    //    var item = this.orderItem.productId === x?.productId;
+
+    //    if (item) {
+
+    //        this.orderItem.productId.
+    //    }
+    //}
+
     addToOrder(product: Product) {
 
         let item: OrderItem | undefined;
 
-        item = this.order.Items.find(o => o.productId === product.productNumber);
+        item = this.order.Items.find(o => o.productId === product.productId);
 
         if (item?.quantity !== undefined) {
             item.quantity ++;

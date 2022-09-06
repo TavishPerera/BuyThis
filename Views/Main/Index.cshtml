@@ -4,26 +4,18 @@
     ViewBag.Title = "Welcome";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@section Scripts{
+    <script src="~/client-app/runtime.dfeee1d39451ef17.js"></script>
+    <script src="~/client-app/polyfills.be3e8e003f99e6af.js"></script>
+    <script src="~/client-app/main.2d35108e9ad8c51d.js"></script>
+}
 
-<div align="center" class="col-sm-12 container-fluid">
+@section head{
+    <base href="/Main/Shop" />
+    <link href="~/client-app/styles.ef46db3751d8e999.css" rel="stylesheet" />
+}
+
+<div class="col-sm-12 container-fluid">
     <h1>Welcome to BuyThis.LK</h1>
-    @*<br />
-    <div class="row">
-        @foreach (var p in Model)
-        {
-            <div class="col-sm-3">
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="~/img/@(p.ProductPicture).jpg">
-                    <div class="card-body">
-                        <h5 class="card-title">@p.ProductName</h5>
-                        <p class="card-text">@p.ProductDescription
-                        <br />
-                        LKR @p.ProductPrice</p>
-                        @Html.ActionLink("View", "ProductPage", new {id = p.ProductId}, new {@class = "btn btn-primary far fa-eye"})
-                    </div>
-                </div>
-                <br>
-            </div>
-        }
-    </div>*@
+        <the-product></the-product>
 </div>

@@ -10,6 +10,7 @@ import { Store } from "../services/store.service";
 export class CheckoutPage {
 
     public errorMessage = "";
+    public successMessage = "";
 
     constructor(public store: Store, private router: Router) {}
 
@@ -17,7 +18,8 @@ export class CheckoutPage {
         this.errorMessage = "";
         this.store.checkout()
             .subscribe(() => {
-                this.router.navigate(["/"]);
+                //this.router.navigate(["/"]);
+                this.successMessage = 'Order Complete';
             }, err => {
                 this.errorMessage = 'Failed to checkout: ${err}';
             })

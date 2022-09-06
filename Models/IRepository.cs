@@ -12,5 +12,6 @@ namespace BuyThis.Models
         Order GetOrderById(string userName, int id);
         void AddOrder(Order newOrder);
         void AddEntity(object model);
+        string NextNumber();
     }
 }

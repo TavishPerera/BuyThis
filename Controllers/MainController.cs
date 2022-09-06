@@ -9,10 +9,8 @@ using Microsoft.AspNetCore.Identity;
 
 namespace BuyThis.Controllers
 {
-    
     public class MainController : Controller
     {
-
         private readonly IRepository _repository;
         private readonly IMapper _mapper;
         private readonly ILogger<MainController> _logger;
@@ -24,7 +22,6 @@ namespace BuyThis.Controllers
             _mapper = mapper;
             _logger = logger;
             _userManager = userManager;
-            //_context = context;
         }
 
         public IActionResult Index()
@@ -34,10 +31,16 @@ namespace BuyThis.Controllers
             return View(results);
         }
 
+        public IActionResult Orders(string username, bool includeItem = true)
+        {
+            username = User.Identity.Name;
+            var results = _repository.GetAllOrdersByUser(username, includeItem);
+            return View(results);
+        }
+
         public IActionResult Shop()
         {
             var results = _repository.GetAllProducts();
-
             return View(results);
         }
 

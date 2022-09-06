@@ -84,12 +84,12 @@ namespace BuyThis.Controllers
                     var currentUser = await _userManager.FindByNameAsync(User.Identity.Name);
                     newOrder.User = currentUser;
                     newOrder.OrderStatus = "Pending";
-                    newOrder.OrderNumber = "1000000";
-                    //newOrder.OrderTotal = p.ProductPrice * newOrder.OrderQty;
+                    newOrder.OrderNumber = _repository.NextNumber();
 
                     _repository.AddEntity(newOrder);
                     if (_repository.SaveAll())
                     {
+
                         return Created($"api/orders/{newOrder.Id}", _mapper.Map<Order, OrderViewModel>(newOrder));
                     }
             }

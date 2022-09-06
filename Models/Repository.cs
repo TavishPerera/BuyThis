@@ -61,6 +61,26 @@ namespace BuyThis.Models
             }
         }
 
+        public string NextNumber()
+        {
+            string number = "";
+            var result = (from e in _context.Orders
+                          orderby e.OrderNumber descending
+                          select e.OrderNumber).FirstOrDefault();
+
+            if (result == null)
+            {
+                number = "1000001";
+            }
+            else
+            {
+                int x = (int)Int64.Parse(number);
+                int z = x + 1;
+                number = z.ToString();
+            }
+            return number;
+        }
+
         public IEnumerable<Order> GetAllOrdersByUser(string userEmail, bool includeItem)
         {
             if (includeItem)
