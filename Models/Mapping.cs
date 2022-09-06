@@ -9,11 +9,12 @@ namespace BuyThis.Models
         public Mapping()
         {
             CreateMap<Order, OrderViewModel>()
-                .ForMember(ov => ov.Id,
-                map => map.MapFrom(o => o.OrderId))
+                .ForMember(ov => ov.OrderId,
+                map => map.MapFrom(o => o.Id))
                 .ReverseMap();
 
-            CreateMap<OrderItems, OrderViewModel>().ReverseMap();
+            CreateMap<OrderItems, OrderItemViewModel>().ReverseMap()
+                .ForMember(m => m.Product, opt => opt.Ignore());
         }
         
     }

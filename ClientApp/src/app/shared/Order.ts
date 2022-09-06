@@ -1,5 +1,5 @@
 ﻿export class OrderItem {
-    Id: number | undefined;
+    id: number | undefined;
     productId: number | undefined;
     productNumber: number | undefined;
     productName: string | undefined;
@@ -11,18 +11,17 @@
 }
 
 export class Order {
+
     orderId: number | undefined;
-    orderNumber: string | undefined;
     orderDate: Date = new Date();
-    orderTotal: number | undefined;
-    /*orderStatus: string | undefined;*/
-    items: OrderItem[] = [];
+    Items: Array<OrderItem> = new Array<OrderItem>();
 
     get subtotal(): number | undefined{
 
-        const result = this.items.reduce(
+        const result = this.Items.reduce(
             (tot, val?) => {
-                return tot + ((val?.unitPrice??0)  * (val?.quantity ??0));
+                return tot + ((val?.unitPrice ?? 0) * (val?.quantity ?? 0));
+                
             }, 0);
         return result;
     }

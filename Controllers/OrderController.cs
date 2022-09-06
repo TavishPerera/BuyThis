@@ -74,7 +74,7 @@ namespace BuyThis.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    var newOrder = _mapper.Map<OrderViewModel, Order>(model);
+                    var newOrder = _mapper.Map<Order>(model);
 
                     if (newOrder.OrderDate == DateTime.MinValue)
                     {
@@ -84,19 +84,20 @@ namespace BuyThis.Controllers
                     var currentUser = await _userManager.FindByNameAsync(User.Identity.Name);
                     newOrder.User = currentUser;
                     newOrder.OrderStatus = "Pending";
+                    newOrder.OrderNumber = "1000000";
+                    //newOrder.OrderTotal = p.ProductPrice * newOrder.OrderQty;
 
-                    _repository.AddOrder(newOrder);
+                    _repository.AddEntity(newOrder);
                     if (_repository.SaveAll())
                     {
-
-                        return Created($"api/orders/{newOrder.OrderId}", _mapper.Map<Order, OrderViewModel>(newOrder));
+                        return Created($"api/orders/{newOrder.Id}", _mapper.Map<Order, OrderViewModel>(newOrder));
                     }
-                }
-                else
-                {
-                    return BadRequest(ModelState);
-                }
             }
+                else
+            {
+                return BadRequest(ModelState);
+            }
+        }
 
             catch (Exception ex)
             {

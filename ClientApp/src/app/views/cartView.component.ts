@@ -7,7 +7,5 @@ import { Store } from "../services/store.service";
     styleUrls: ["cartView.component.css"]
 })
 export class CartView {
-    constructor(public store: Store) {
-
-    }
+    constructor(public store: Store) {}
 }

@@ -34,7 +34,6 @@ namespace BuyThis.Controllers
             return View(results);
         }
 
-        [Authorize]
         public IActionResult Shop()
         {
             var results = _repository.GetAllProducts();

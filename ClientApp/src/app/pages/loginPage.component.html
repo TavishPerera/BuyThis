@@ -1,0 +1,22 @@
+﻿<div align="center" class="container col-md-4 card bg-light">
+    <h2 class="card-body">Login</h2>
+    <form #theForm="ngForm">
+        <div *ngIf="errorMessage" class="alert alert-danger">{{errorMessage}}</div>
+        <br />
+        <div class="form-group">
+            <input type="email" class="form-control" placeholder="Enter Email" #UserEmail="ngModel" [(ngModel)]="creds.UserEmail" required/>
+            <div class="text-danger" *ngIf="UserEmail.touched && UserEmail.invalid && UserEmail?.errors?.['required']">Required</div>
+        </div>
+        <br />
+        <div class="form-group">
+            <input asp-for="UserPassword" type="password" class="form-control" placeholder="Enter Password" #UserPassword="ngModel" [(ngModel)]="creds.UserPassword" required/>
+            <div class="text-danger" *ngIf="UserPassword.touched && UserPassword.invalid && UserPassword?.errors?.['required']">Required</div>
+        </div>
+        <br />
+        <div class="form-group"> 
+            <button (click)="onLogin()" class="btn btn-success" [disabled]="UserEmail.invalid || UserPassword.invalid">Login</button>
+            <a href="#" class="btn btn-danger">Cancel</a>
+        </div>
+        <br />
+    </form>
+</div>

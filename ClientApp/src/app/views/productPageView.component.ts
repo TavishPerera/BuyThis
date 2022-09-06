@@ -8,11 +8,7 @@ import { Store } from "../services/store.service";
 })
 
 export default class ProductPageView implements OnInit {
-
-    constructor(public store: Store) {
-
-    }
-
+    constructor(public store: Store) {}
     ngOnInit(): void {
         this.store.loadProduct().subscribe();
     }

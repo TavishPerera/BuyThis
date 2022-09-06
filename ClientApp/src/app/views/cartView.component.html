@@ -10,26 +10,20 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let item of store.order.items">
+        <tr *ngFor="let Item of store.order.Items">
             <td>
-                <img src="/img/{{item.productPicture}}.jpg" class="img-fluid product-img"/>
+                <img src="/img/{{Item.productPicture}}.jpg" class="img-fluid product-img"/>
             </td>
-            <td>{{item.productName}}</td>
-            <td>{{item.quantity}}</td>
-            <td>{{item.unitPrice | currency :"LKR "}}</td>
-
-            <td> {{item.unitPrice === undefined || item.quantity === undefined ? 'Unknown' : (item.unitPrice*item.quantity| currency :"LKR ")}}</td>
+            <td>{{Item.productName}}</td>
+            <td>{{Item.quantity}}</td>
+            <td>{{Item.unitPrice | currency :"LKR "}}</td>
+            <td> {{Item.unitPrice === undefined || Item.quantity === undefined ? 'Unknown' : (Item.unitPrice*Item.quantity| currency :"LKR ")}}</td>
         </tr>
     </tbody>
-
     <tfoot>
         <tr>
             <td colspan="5"><strong>Subtotal : {{store.order.subtotal | currency :"LKR "}}</strong></td>
         </tr>
     </tfoot>
-
 </table>
-
-<a class="btn btn-success" *ngIf="store.order.items.length>0" routerLink="checkout">Checkout</a>
-
-<hr />
+<a class="btn btn-success" *ngIf="store.order.Items.length>0" routerLink="checkout">Checkout</a>

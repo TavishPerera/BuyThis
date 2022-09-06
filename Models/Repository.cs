@@ -84,7 +84,7 @@ namespace BuyThis.Models
             return _context.Orders
                 .Include(o => o.Items)
                 .ThenInclude(oi => oi.Product)
-                .Where(o => o.OrderId == id && o.User.UserName == userEmail)
+                .Where(o => o.Id == id && o.User.UserName == userEmail)
                 .FirstOrDefault();
         }
 

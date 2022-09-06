@@ -9,8 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\pages\loginPage.component.ts" />
     <None Remove="ClientApp\src\app\pages\shopPage.component.ts" />
     <None Remove="ClientApp\src\app\router\index.ts" />
+    <None Remove="ClientApp\src\app\services\authActivator.service.ts" />
     <None Remove="ClientApp\src\app\services\store.service.ts" />
     <None Remove="ClientApp\src\app\shared\Order.ts" />
   </ItemGroup>
@@ -28,8 +30,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\pages\loginPage.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\pages\shopPage.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\router\index.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\authActivator.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\store.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared\Order.ts" />
   </ItemGroup>
